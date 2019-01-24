@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<style>
+    
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 999px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        background: red;
+        cursor: inherit;
+        display: block;
+    }
+
+input[readonly] {
+    background-color: white !important;
+    cursor: text !important;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 100%;
+    padding: 10%;
+    background-color: #ffffff;
+}
+
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+</style>
+<div class="jumbotron text-center" style="background-color: #ffffff">
+    <form action = "http://localhost:5000/uploader" method = "POST" 
+        enctype = "multipart/form-data">
+
+    
+    <input type="file" name="file1">
+    <input type="file" name="file2"/>
+    <input type="submit" value="submit"/>
+    </form>
+    <!--<div>
+        <h2>Upload your files for comparing</h2>
+        <div class="card">
+                Resume :
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="doc, docx, pdf supported" readonly>
+                    <label class="input-group-btn">
+                        <span class="btn btn-default">
+                            Browse&hellip; <input type="file"  (change)="onFileSelected($event)" style="display: none;" accept=".doc, .docx, .pdf">
+                        </span>
+                    </label>
+                </div>
+                <br />
+                Requirement :
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="doc, docx, pdf supported" readonly>
+                    <label class="input-group-btn">
+                        <span class="btn btn-default">
+                            Browse&hellip; <input type="file" (change)="onFileSelected($event)" style="display: none;" accept=".doc, .docx, .pdf">
+                        </span>
+                    </label>
+                </div>
+                <br />
+                <button class="btn btn-primary col-md-offset-8" onclick="location.href = '/counter'">Upload Files&nbsp;&nbsp;<i class="fas fa-cloud-upload-alt"></i></button>
+        </div>
+    </div>-->
+</div>
+{% endblock %}
