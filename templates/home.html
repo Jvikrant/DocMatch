@@ -42,14 +42,15 @@ input[readonly] {
 }
 </style>
 <div class="jumbotron text-center" style="background-color: #ffffff">
-    <form action = "http://localhost:5000/uploader" method = "POST" 
-        enctype = "multipart/form-data">
+    <div class="card">
+        <form action="http://127.0.0.1:5000/uploader" method="POST">
+            <input type="file" class="form-control" name="file1">
+            <input type="file" class="form-control" name="file2"/>
 
-    
-    <input type="file" name="file1">
-    <input type="file" name="file2"/>
-    <input type="submit" value="submit"/>
-    </form>
+            <br/><br/>
+            <input type="submit" class="btn btn-primary" value="submit"/>
+        </form>
+    </div>
     <!--<div>
         <h2>Upload your files for comparing</h2>
         <div class="card">
