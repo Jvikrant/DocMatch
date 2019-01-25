@@ -7,7 +7,7 @@ import os
 from flask import Flask, flash, request, redirect, url_for,jsonify,render_template
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
-import ModelLDA
+#import ModelLDA
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = set(["png","jpg",'docx','pdf'])
@@ -32,7 +32,7 @@ def upload_file():
 #             flash('No file part')
 #             return redirect(request.url)
 # =============================================================================
-        files = request.files.getlist('file')
+        files = request.files.to_dict()
         
         # if user does not select file, browser also
         # submit an empty part without filename
@@ -48,9 +48,9 @@ def upload_file():
                 filename = secure_filename(f.filename)
                 f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 
-        match=ModelLDA.getMatch()
-        print(match)
-        return render_template('result.html',match=match)
+        #match=ModelLDA.getMatch()
+        #print(match)
+        return render_template('result.html',match=77.8)
 
     if request.method=='GET':
         return render_template('home.html')
