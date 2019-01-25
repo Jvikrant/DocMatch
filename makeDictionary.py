@@ -14,7 +14,7 @@ Created on Thu Oct  4 14:48:43 2018
 # dataset=pd.read_csv("dataset.csv")
 # =============================================================================
 from fileRead import get_text
-txtfile=[txt for txt in get_text("..\JD & GuideLine\CG Evaluation Guidelines_ASP.NET MVC.PDF").split('\n')]
+txtfile=[txt for txt in get_text("JD & GuideLine\CG Evaluation Guidelines_ASP.NET MVC.PDF").split('\n')]
 #txtfile=[txt for txt in get_text("..\JD & GuideLine\JD - ADM Practice - .NET WPF Developer.docx").split('\n')]
 
 #Text extracted from dataset/file

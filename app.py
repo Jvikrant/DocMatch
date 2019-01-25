@@ -7,12 +7,13 @@ import os
 from flask import Flask, flash, request, redirect, url_for,jsonify,render_template
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
+import ModelLDA
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = set(["png","jpg",'docx','pdf'])
 
 app = Flask(__name__)
-cors=CORS(app)
+#cors=CORS(app)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
@@ -46,7 +47,11 @@ def upload_file():
             if f and allowed_file(f.filename):
                 filename = secure_filename(f.filename)
                 f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    
+                
+        match=ModelLDA.getMatch()
+        print(match)
+        return render_template('result.html',match=match)
+
     if request.method=='GET':
         return render_template('home.html')
 
