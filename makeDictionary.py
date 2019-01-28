@@ -52,9 +52,9 @@ def getCorpDict(jdfilepath):
     corpus = [dictionary.doc2bow(text) for text in text_data]
     
     #saving corpus & dictionary for later use
-    import pickle
-    pickle.dump(corpus, open('corpus.pkl', 'wb'))
-    dictionary.save('dictionary.gensim')
+    #import pickle
+    #pickle.dump(corpus, open('corpus.pkl', 'wb'))
+    #dictionary.save('dictionary.gensim')
     
     return corpus,dictionary
 

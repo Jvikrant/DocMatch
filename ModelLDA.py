@@ -18,7 +18,7 @@ def LDA(jd,cv):
 
     NUM_TOPICS = 10
     ldamodel = gensim.models.ldamodel.LdaModel(corpora, num_topics = NUM_TOPICS, id2word=dictionary, passes=43)
-    ldamodel.save('model10.gensim')
+    #ldamodel.save('model10.gensim')
     topics = ldamodel.print_topics(num_words=4)
     for topic in topics:
        print(topic)
