@@ -20,13 +20,13 @@ def LDA(jd,cv):
     ldamodel = gensim.models.ldamodel.LdaModel(corpora, num_topics = NUM_TOPICS, id2word=dictionary, passes=43)
     ldamodel.save('model10.gensim')
     topics = ldamodel.print_topics(num_words=4)
-    #for topic in topics:
-    #   #print(topic)
+    for topic in topics:
+       print(topic)
 
     #Document testing 
     from tokenizer import prepare_text_for_lda
     from fileRead import get_text
-    new_doc=get_text("cv")
+    new_doc=get_text(cv)
     #new_doc=get_text("../CV/86357_FS_Jinendra_Khot.docx")
     new_doc = prepare_text_for_lda(new_doc)
     new_doc_bow = dictionary.doc2bow(new_doc)
