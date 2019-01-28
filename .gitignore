@@ -1,3 +1,4 @@
 uploads/*
 model10.*
 dictionary.gensim
+*.pkl
