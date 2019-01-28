@@ -26,12 +26,11 @@ def allowed_file(filename):
 @app.route('/uploader', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
+        files = request.files.to_dict()
         # check if the post request has the file part
-        if 'file' not in request.files:
+        if len(request.files)==0:
             flash('No file part')
             return redirect(request.url)
-        
-        files = request.files.to_dict()
         
         # if user does not select file, browser also
         # submit an empty part without filename
