@@ -7,7 +7,7 @@ import os
 from flask import Flask, flash, request, redirect, url_for,jsonify,render_template
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
-import ModelLDA
+#import ModelLDA
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = set(["png","jpg",'docx','pdf'])
