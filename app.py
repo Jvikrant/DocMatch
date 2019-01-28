@@ -4,10 +4,10 @@ Created on Tue Jan 15 14:20:02 2019
 @author: jdhruwa
 """
 import os
-from flask import Flask, flash, request, redirect, url_for,jsonify,render_template
+from flask import Flask, flash, request,url_for,redirect,jsonify,render_template
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
-#import ModelLDA
+import ModelLDA
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = set(["png","jpg",'docx','pdf'])
@@ -40,17 +40,19 @@ def upload_file():
         print(files)
         for f in files:
             f=files[f]
-            print(f)
+            #print(f)
             if f.filename == '':
                 flash('No selected file')
                 return redirect(request.url)
             if f and allowed_file(f.filename):
                 filename = secure_filename(f.filename)
                 f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-                
-        #match=ModelLDA.getMatch()
+
+        jd=url_for('uploaded_file',filename=secure_filename(files['file1'].filename))
+        cv=url_for('uploaded_file',filename=secure_filename(files['file2'].filename))   
+        match=ModelLDA.LDA(jd[1:],cv[1:])
         #print(match)
-        return render_template('result.html',match=77.8)
+        return render_template('result.html',match=round(match,2))
 
     if request.method=='GET':
         return render_template('home.html')
