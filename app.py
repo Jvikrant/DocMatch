@@ -24,30 +24,30 @@ def allowed_file(filename):
 @app.route('/uploader', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
-        files = request.files.to_dict()
-        # check if the post request has the file part
-        if len(request.files)==0:
-            flash('No file part')
-            return redirect(request.url)
+        # files = request.files.to_dict()
+        # # check if the post request has the file part
+        # if len(request.files)==0:
+        #     flash('No file part')
+        #     return redirect(request.url)
         
-        # if user does not select file, browser also
-        # submit an empty part without filename
+        # # if user does not select file, browser also
+        # # submit an empty part without filename
         
-        print(files)
-        for f in files:
-            f=files[f]
-            #print(f)
-            if f.filename == '':
-                flash('No selected file')
-                return redirect(request.url)
-            if f and allowed_file(f.filename):
-                filename = secure_filename(f.filename)
-                f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        # print(files)
+        # for f in files:
+        #     f=files[f]
+        #     #print(f)
+        #     if f.filename == '':
+        #         flash('No selected file')
+        #         return redirect(request.url)
+        #     if f and allowed_file(f.filename):
+        #         filename = secure_filename(f.filename)
+        #         f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-        jd=url_for('uploaded_file',filename=secure_filename(files['file1'].filename))
-        cv=url_for('uploaded_file',filename=secure_filename(files['file2'].filename))   
-        #match=ModelLDA.LDA(jd[1:],cv[1:])
-        #print(match)
+        # jd=url_for('uploaded_file',filename=secure_filename(files['file1'].filename))
+        # cv=url_for('uploaded_file',filename=secure_filename(files['file2'].filename))   
+        # match=ModelLDA.LDA(jd[1:],cv[1:])
+        # print(match)
         match=85
         return render_template('result.html',match=round(match,2))
 
