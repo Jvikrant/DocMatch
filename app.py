@@ -5,15 +5,13 @@ Created on Tue Jan 15 14:20:02 2019
 """
 import os
 from flask import Flask, flash, request,url_for,redirect,jsonify,render_template
-from flask_cors import CORS
 from werkzeug.utils import secure_filename
-import ModelLDA
+#import ModelLDA
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = set(["png","jpg",'docx','pdf'])
 
 app = Flask(__name__)
-cors=CORS(app)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
@@ -48,8 +46,9 @@ def upload_file():
 
         jd=url_for('uploaded_file',filename=secure_filename(files['file1'].filename))
         cv=url_for('uploaded_file',filename=secure_filename(files['file2'].filename))   
-        match=ModelLDA.LDA(jd[1:],cv[1:])
+        #match=ModelLDA.LDA(jd[1:],cv[1:])
         #print(match)
+        match=85
         return render_template('result.html',match=round(match,2))
 
     if request.method=='GET':
@@ -67,4 +66,4 @@ def uploaded_file(filename):
 if __name__=="__main__":
     app.secret_key = os.urandom(24)
     
-    app.run(debug=True)
+    app.run()
